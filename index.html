@@ -1,0 +1,2073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin</title>
+
+    <style>
+/* =========================================================
+   GLOBAL RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Inter", "Segoe UI", Arial, sans-serif;
+    background: #08080d;
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+section {
+    min-height: 100vh;
+    position: relative;
+    padding: 120px 8%;
+}
+
+
+/* =========================================================
+   SELECTION
+========================================================= */
+
+::selection {
+    background: #ff79bd;
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255, 94, 180, 0.18),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 20% 80%,
+            rgba(112, 74, 255, 0.12),
+            transparent 30%
+        ),
+        #08080d;
+}
+
+
+/* Decorative glow */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 93, 179, 0.08);
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+
+/* Small subtitle */
+
+.hero .subtitle {
+    position: relative;
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    color: #ff9fd2;
+
+    margin-bottom: 28px;
+
+    max-width: 800px;
+
+    line-height: 1.7;
+}
+
+
+/* Main heading */
+
+.hero h1 {
+    position: relative;
+
+    font-size: clamp(55px, 11vw, 145px);
+
+    line-height: 0.9;
+
+    font-weight: 800;
+
+    letter-spacing: -6px;
+
+    margin-bottom: 35px;
+
+    color: #ffffff;
+}
+
+
+/* Cake icon next to heading */
+
+.hero h1 img {
+    width: clamp(45px, 5vw, 75px);
+    height: auto;
+
+    margin-left: 15px;
+
+    transform: translateY(-10px);
+
+    filter: drop-shadow(
+        0 0 12px rgba(255, 122, 190, 0.6)
+    );
+}
+
+
+/* Description */
+
+.hero .description {
+    position: relative;
+
+    font-size: 20px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    line-height: 1.7;
+}
+
+
+/* Scroll button */
+
+.scroll-down {
+    position: absolute;
+
+    bottom: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 50px;
+
+    color: rgba(255, 255, 255, 0.65);
+
+    font-size: 13px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
+
+    background: rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(10px);
+
+    transition: 0.3s ease;
+}
+/* Glass effect - See More */
+.scroll-down {
+    background: rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.45);
+
+    box-shadow:
+        0 8px 25px rgba(255, 105, 160, 0.15),
+        inset 0 1px 1px rgba(104, 103, 103, 0.721);
+}
+
+.scroll-down:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: translateY(-3px);
+}
+
+.scroll-down img {
+    width: 22px;
+    height: 22px;
+
+    object-fit: contain;
+
+    margin: 0;
+
+    filter: none;
+
+    transition: transform 0.3s ease;
+}.scroll-down:hover img {
+    transform: translateX(5px);
+}
+
+.scroll-down:hover {
+    color: #ffffff;
+
+    border-color: rgba(255, 145, 204, 0.5);
+
+    transform: translateY(-3px);
+}
+
+.scroll-down:hover img {
+    transform: translateX(5px);
+}
+
+
+/* =========================================================
+   INTRO
+========================================================= */
+
+.intro {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            180deg,
+            #08080d 0%,
+            #0d0912 100%
+        );
+}
+
+
+/* Decorative top glow */
+
+.intro::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 50%;
+
+    width: 500px;
+    height: 1px;
+
+    transform: translateX(-50%);
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #ff7fbd,
+        transparent
+    );
+}
+
+
+/* Subtitle */
+
+.intro .subtitle {
+    font-size: 14px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    color: #ff9fd2;
+
+    margin-bottom: 25px;
+}
+
+
+/* Heading */
+
+.intro h2 {
+    font-size: clamp(42px, 7vw, 85px);
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 40px;
+}
+
+
+/* Heart inside heading */
+
+.intro h2 img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: contain;
+
+    margin-left: 10px;
+
+    vertical-align: middle;
+
+    filter: drop-shadow(
+        0 0 10px rgba(255, 80, 150, 0.6)
+    );
+
+    transition: transform 0.3s ease;
+}
+.intro h2 img:hover {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+
+/* Message */
+
+.intro .message {
+    max-width: 750px;
+
+    font-size: 19px;
+
+    line-height: 2;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    margin-bottom: 18px;
+}
+.intro .message img {
+    width: 30px;
+    height: 30px;
+
+    object-fit: contain;
+
+    margin-left: 6px;
+
+    vertical-align: middle;
+
+    filter: drop-shadow(
+        0 0 8px rgba(255, 170, 220, 0.4)
+    );
+
+    transition: transform 0.3s ease;
+}
+
+.intro .message img:hover {
+    transform: scale(1.15) rotate(5deg);
+}
+
+
+/* Bold text */
+
+.intro .message b {
+    color: #ffffff;
+
+    font-weight: 600;
+}
+
+
+/* Journey icon */
+
+.intro .message img {
+    width: 20px;
+
+    margin-left: 5px;
+}
+
+
+/* =========================================================
+   MEMORIES
+========================================================= */
+
+.memories {
+    background: #09090f;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+}
+
+
+/* Section title */
+
+.memories > h2 {
+    width: 100%;
+
+    max-width: 1100px;
+
+    text-align: center;
+
+    font-size: clamp(40px, 6vw, 75px);
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 90px;
+}
+
+
+/* Yearbook icon */
+
+.memories > h2 img {
+    width: 45px;
+    height: 45px;
+
+    object-fit: contain;
+
+    margin-left: 12px;
+
+    vertical-align: middle;
+
+    filter: drop-shadow(
+        0 0 10px rgba(255, 166, 211, 0.5)
+    );
+
+    transition: transform 0.3s ease;
+}
+
+.memories > h2 img:hover {
+    transform: scale(1.15) rotate(-5deg);
+}
+
+
+
+/* Memory card */
+
+.memory {
+    width: 100%;
+
+    max-width: 1050px;
+
+    display: grid;
+
+    grid-template-columns: 1.1fr 0.9fr;
+
+    align-items: center;
+
+    gap: 60px;
+
+    margin-bottom: 100px;
+
+    padding: 25px;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.06),
+            rgba(255, 255, 255, 0.015)
+        );
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.35);
+
+    transition:
+        transform 0.5s ease,
+        border-color 0.5s ease,
+        box-shadow 0.5s ease;
+}
+/* Glass effect - Memory cards */
+.memory {
+    background: rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border: 1px solid rgba(93, 89, 89, 0.5);
+    border-radius: 24px;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.08),
+        inset 0 1px 1px rgba(62, 60, 60, 0.65);
+
+    transition: 0.35s ease;
+}
+
+.memory:hover {
+    transform: translateY(-7px);
+
+    background: rgba(76, 75, 75, 0.34);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.12);
+}
+
+
+/* Card hover */
+
+.memory:hover {
+    transform: translateY(-8px);
+
+    border-color: rgba(255, 137, 196, 0.3);
+
+    box-shadow:
+        0 40px 100px rgba(0, 0, 0, 0.45),
+        0 0 50px rgba(255, 83, 171, 0.06);
+}
+
+
+/* Memory image */
+
+.memory > img {
+    width: 100%;
+
+    height: 460px;
+
+    object-fit: cover;
+
+    border-radius: 22px;
+
+    transition:
+        transform 0.6s ease,
+        filter 0.6s ease;
+}
+
+
+/* Image hover */
+
+.memory:hover > img {
+    transform: scale(1.015);
+
+    filter: brightness(1.05);
+}
+
+
+/* Memory title */
+
+.memory h3 {
+    font-size: clamp(28px, 4vw, 45px);
+
+    line-height: 1.1;
+
+    letter-spacing: -1.5px;
+
+    margin-bottom: 22px;
+
+    color: #ffffff;
+}
+
+
+/* Heart icon */
+
+.memory h3 img {
+    width: 32px;
+    height: 32px;
+
+    object-fit: contain;
+
+    margin-left: 8px;
+
+    vertical-align: middle;
+
+    filter: drop-shadow(
+        0 0 10px rgba(255, 70, 145, 0.6)
+    );
+
+    transition: transform 0.3s ease;
+}
+
+.memory h3 img:hover {
+    transform: scale(1.2) rotate(-8deg);
+}
+
+
+/* Memory description */
+
+.memory p {
+    font-size: 17px;
+
+    line-height: 1.9;
+
+    color: rgba(255, 255, 255, 0.58);
+
+    max-width: 400px;
+}
+
+
+/* =========================================================
+   WISHES
+========================================================= */
+
+.wishes {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255, 91, 174, 0.1),
+            transparent 35%
+        ),
+        #0a0910;
+}
+
+
+/* Heading */
+
+.wishes > h2 {
+    font-size: clamp(40px, 6vw, 75px);
+
+    line-height: 1;
+
+    letter-spacing: -3px;
+
+    margin-bottom: 70px;
+}
+
+
+/* Wish cards */
+
+.wish {
+    width: 100%;
+
+    max-width: 700px;
+
+    padding: 35px 40px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 22px;
+
+    background: rgba(255, 255, 255, 0.035);
+
+    backdrop-filter: blur(12px);
+
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease;
+}
+
+
+/* Hover */
+
+.wish:hover {
+    transform: translateY(-7px);
+
+    background: rgba(255, 255, 255, 0.06);
+
+    border-color: rgba(255, 151, 207, 0.3);
+}
+
+
+/* Wish heading */
+
+.wish h3 {
+    font-size: 27px;
+
+    margin-bottom: 12px;
+
+    color: #ffabd9;
+}
+
+
+/* Wish heart */
+
+.wish h3 img {
+    width: 28px;
+    height: 28px;
+
+    object-fit: contain;
+
+    margin-left: 6px;
+
+    vertical-align: middle;
+
+    filter: drop-shadow(
+        0 0 8px rgba(255, 70, 145, 0.6)
+    );
+
+    transition: transform 0.3s ease;
+}
+
+.wish h3 img:hover {
+    transform: scale(1.2) rotate(-8deg);
+}
+
+
+/* Wish paragraph */
+
+.wish p {
+    font-size: 16px;
+
+    line-height: 1.8;
+
+    color: rgba(255, 255, 255, 0.55);
+}
+
+
+/* =========================================================
+   BIRTHDAY CAKE / WISH SECTION
+========================================================= */
+
+.birthday-cake {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 88, 174, 0.15),
+            transparent 35%
+        ),
+        #08080d;
+}
+
+
+/* Heading */
+
+.birthday-cake h2 {
+    font-size: clamp(48px, 8vw, 100px);
+
+    line-height: 1;
+
+    letter-spacing: -4px;
+
+    margin-bottom: 40px;
+}
+
+
+/* Paragraphs */
+
+.birthday-cake p {
+    font-size: 20px;
+
+    line-height: 2;
+
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+/* =========================================================
+   FINAL SECTION
+========================================================= */
+
+.final {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 77, 171, 0.18),
+            transparent 35%
+        ),
+        #07070c;
+}
+
+
+/* Decorative glow */
+
+.final::before {
+    content: "";
+
+    position: absolute;
+
+    width: 600px;
+    height: 600px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 65, 170, 0.06);
+
+    filter: blur(100px);
+}
+
+
+/* Main final heading */
+
+.final h1 {
+    position: relative;
+
+    font-size: clamp(50px, 10vw, 130px);
+
+    line-height: 0.9;
+
+    letter-spacing: -5px;
+
+    margin-bottom: 35px;
+
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #ffacd9,
+        #ffd09c,
+        #ffffff
+    );
+
+    -webkit-background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* Party icon */
+
+.final h1 img {
+    width: 55px;
+    height: 55px;
+
+    object-fit: contain;
+
+    margin-left: 12px;
+
+    vertical-align: middle;
+
+    filter: drop-shadow(
+        0 0 12px rgba(255, 170, 220, 0.6)
+    );
+
+    transition: transform 0.3s ease;
+}
+
+.final h1 img:hover {
+    transform: scale(1.15) rotate(8deg);
+}
+
+
+/* Final subtitle */
+
+.final h2 {
+    position: relative;
+
+    font-size: clamp(30px, 5vw, 50px);
+
+    margin-bottom: 40px;
+
+    color: #ffb0db;
+}
+
+
+/* Heart */
+
+.final h2 img {
+    width: 38px;
+    height: 38px;
+
+    object-fit: contain;
+
+    margin-left: 8px;
+
+    vertical-align: middle;
+
+    filter: drop-shadow(
+        0 0 10px rgba(255, 70, 145, 0.7)
+    );
+
+    transition: transform 0.3s ease;
+}
+
+.final h2 img:hover {
+    transform: scale(1.2) rotate(-8deg);
+}
+
+
+/* Final paragraphs */
+
+.final p {
+    position: relative;
+
+    max-width: 700px;
+
+    font-size: 19px;
+
+    line-height: 1.9;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    margin-bottom: 18px;
+}
+
+
+/* Last heart */
+.final .final-heart {
+    margin-top: 30px;
+
+    animation: heartbeat 1.4s ease-in-out infinite;
+}
+
+.final .final-heart img {
+    width: 42px;
+    height: 42px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(0 0 15px rgba(255, 72, 145, 0.8));
+
+    transition: transform 0.3s ease;
+}
+
+.final .final-heart img:hover {
+    transform: scale(1.2);
+}
+/* =====================================================
+   ENDING BALLOONS
+===================================================== */
+
+.balloon {
+    position: fixed;
+    bottom: -120px;
+    width: 55px;
+    height: 70px;
+    border-radius: 50% 50% 45% 45%;
+    z-index: 9998;
+    pointer-events: none;
+
+    animation:
+        balloonRise 7s ease-in forwards;
+}
+
+.balloon::before {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.balloon::after {
+    content: "";
+    position: absolute;
+    top: 68px;
+    left: 50%;
+
+    width: 1px;
+    height: 120px;
+
+    background: rgba(80, 80, 80, 0.35);
+}
+.footer {
+    text-align: center;
+    padding: 12px 0 18px;
+    font-size: 11px;
+    color: #aaa;
+    font-weight: 400;
+}
+
+@keyframes balloonRise {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(-5deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform:
+            translateY(-55vh)
+            rotate(8deg);
+    }
+
+    100% {
+        transform:
+            translateY(-120vh)
+            rotate(-8deg);
+        opacity: 0;
+    }
+}
+
+
+/* Heart animation */
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+    section {
+        padding: 90px 6%;
+    }
+
+
+    .memory {
+        grid-template-columns: 1fr;
+
+        gap: 35px;
+
+        padding: 20px;
+    }
+
+
+    .memory > img {
+        height: 420px;
+    }
+
+
+    .memory h3 {
+        font-size: 35px;
+    }
+
+
+    .memory p {
+        max-width: 100%;
+    }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    section {
+        padding: 80px 5%;
+    }
+
+
+    /* Hero */
+
+    .hero .subtitle {
+        font-size: 11px;
+
+        letter-spacing: 2.5px;
+
+        max-width: 330px;
+    }
+
+
+    .hero h1 {
+        font-size: clamp(48px, 15vw, 80px);
+
+        letter-spacing: -3px;
+    }
+
+
+    .hero .description {
+        font-size: 17px;
+    }
+
+
+    .scroll-down {
+        bottom: 25px;
+
+        font-size: 11px;
+
+        padding: 10px 15px;
+    }
+
+
+    /* Intro */
+
+    .intro h2 {
+        font-size: 42px;
+
+        letter-spacing: -2px;
+    }
+    .intro h2 img {
+        width: 32px;
+        height: 32px;
+
+        margin-left: 6px;
+    }
+
+
+    .intro .message {
+        font-size: 16px;
+
+        line-height: 1.9;
+    }
+      .intro .message img {
+        width: 25px;
+        height: 25px;
+    }
+
+
+    /* Memories */
+
+    .memories > h2 {
+        font-size: 42px;
+
+        letter-spacing: -2px;
+
+        margin-bottom: 55px;
+    }
+    .memories > h2 img {
+        width: 32px;
+        height: 32px;
+
+        margin-left: 7px;
+    }
+    
+
+
+    .memory {
+        padding: 15px;
+
+        border-radius: 24px;
+
+        margin-bottom: 55px;
+    }
+
+
+    .memory > img {
+        height: 300px;
+
+        border-radius: 17px;
+    }
+
+
+    .memory h3 img {
+    width: 25px;
+    height: 25px;
+
+    margin-left: 5px;
+    }
+
+
+    .memory p {
+        font-size: 15px;
+    }
+
+
+    /* Wishes */
+
+    .wishes > h2 {
+        font-size: 42px;
+
+        letter-spacing: -2px;
+
+        margin-bottom: 45px;
+    }
+
+
+    .wish {
+        padding: 28px 22px;
+    }
+
+
+    .wish h3 {
+        font-size: 24px;
+    }
+    wish h3 img {
+        width: 23px;
+        height: 23px;
+
+        margin-left: 4px;
+    }
+
+
+    .wish p {
+        font-size: 15px;
+    }
+
+
+    /* Cake section */
+
+    .birthday-cake h2 {
+        font-size: 50px;
+
+        letter-spacing: -2px;
+    }
+
+
+    .birthday-cake p {
+        font-size: 17px;
+    }
+
+
+    /* Final */
+
+    .final h1 {
+        font-size: clamp(48px, 14vw, 80px);
+
+        letter-spacing: -3px;
+    }
+    .final h1 img {
+        width: 38px;
+        height: 38px;
+
+        margin-left: 7px;
+    }
+
+
+    .final h2 {
+        font-size: 32px;
+    }
+    .final h2 img {
+    width: 28px;
+    height: 28px;
+
+    margin-left: 5px;
+    }
+
+
+    .final p {
+        font-size: 16px;
+
+        line-height: 1.8;
+    }
+    .final .final-heart img {
+        width: 34px;
+        height: 34px;
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+}
+/* Candle blown out */
+
+.flame.blown-out {
+    opacity: 0;
+    transform: translateX(-50%) scale(0);
+    transition: 0.3s ease;
+}
+
+
+/* Final heart click */
+
+.heart {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.heart-pop {
+    animation: heartPop 0.6s ease;
+}
+
+@keyframes heartPop {
+
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.6);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+
+}
+
+
+/* Selected memory */
+
+.memory-image {
+    cursor: pointer;
+    transition: transform 0.4s ease;
+}
+
+.memory-image.selected {
+    transform: scale(1.03);
+}
+    </style>
+
+<style>
+/* Heart burst used by the JavaScript */
+.heart-burst {
+    position: fixed;
+    z-index: 10000;
+    color: #ff6eae;
+    font-size: 20px;
+    pointer-events: none;
+    animation: heartBurst 1s ease-out forwards;
+}
+
+@keyframes heartBurst {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1.4);
+        opacity: 0;
+    }
+}
+</style>
+
+
+<style>
+/* =====================================================
+   PARTY POPPER EFFECT
+===================================================== */
+
+.final h1 img.party-popper-active {
+    animation: partyPopper 0.8s ease-in-out;
+}
+
+@keyframes partyPopper {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    20% {
+        transform: scale(1.25) rotate(-12deg);
+    }
+
+    40% {
+        transform: scale(1.35) rotate(12deg);
+    }
+
+    60% {
+        transform: scale(1.2) rotate(-8deg);
+    }
+
+    80% {
+        transform: scale(1.1) rotate(5deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Confetti pieces that burst from the party popper */
+
+.popper-confetti {
+    position: fixed;
+    width: 7px;
+    height: 14px;
+    z-index: 10001;
+    pointer-events: none;
+    border-radius: 2px;
+    animation: popperConfetti 1.6s cubic-bezier(.15,.75,.25,1) forwards;
+}
+
+@keyframes popperConfetti {
+    0% {
+        opacity: 1;
+        transform:
+            translate(0, 0)
+            rotate(0deg)
+            scale(0.7);
+    }
+
+    100% {
+        opacity: 0;
+        transform:
+            translate(var(--pop-x), var(--pop-y))
+            rotate(var(--pop-r))
+            scale(1);
+    }
+}
+</style>
+
+</head>
+
+<body>
+
+    <section class="hero">
+        <p class="subtitle">
+            Hey! there A little something for you.....
+        </p>
+
+        <h1>
+            Happy Birthday
+            <img src="birthday-cake.png" alt="Birthday cake">
+        </h1>
+
+        <p class="description">
+            Today is all about you.
+        </p>
+
+        <div class="scroll-down">
+            <span>See More</span>
+            <img src="turn-right.png" alt="Scroll down">
+        </div>
+    </section>
+
+
+    <section class="intro">
+        <p class="subtitle">
+            Hey...Shivangi
+        </p>
+
+        <h2>
+            This is for you
+            <img src="heart.png" alt="heart">
+        </h2>
+
+        <p class="message">
+            I know that after a long time, I am messaging you. I know
+            you have so many questions in your mind to ask. But now for a while just
+            forget everything. <b>Today is 31<sup>th</sup> October</b> wishing you Happiest Birthday
+        </p>
+
+        <p class="message">
+            So take a moment, scroll down,
+            and enjoy the little journey.
+            <img src="customer-journey.png" alt="journey">
+        </p>
+    </section>
+
+
+    <section class="memories">
+        <h2>
+            Here are some memories
+            <img src="yearbook.png" alt="memories">
+        </h2>
+
+        <div class="memory">
+            <img
+                src="Gemini_Generated_Image_6rw4pc6rw4pc6rw4.png"
+                alt="Our first memory"
+            >
+
+            <h3>
+                Remember this?
+            </h3>
+
+            <p>
+                One of those moments that
+                deserves to be remembered forever.
+            </p>
+        </div>
+
+        <div class="memory">
+            <img
+                src="Gemini_Generated_Image_6c4red6c4red6c4r.png"
+                alt="Another special memory"
+            >
+
+            <h3>
+                And this one...
+            </h3>
+
+            <p>
+                Somehow the simplest moments
+                become the best memories.
+            </p>
+        </div>
+
+        <div class="memory">
+            <img
+                src="Gemini_Generated_Image_j0987oj0987oj098.png"
+                alt="Another beautiful memory"
+            >
+
+            <h3>
+                More memories
+                <img src="heart.png" alt="heart">
+            </h3>
+
+            <p>
+                And hopefully there are
+                many more to come.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="wishes">
+        <h2>
+            A few wishes for you ✨
+        </h2>
+
+        <div class="wish">
+            <h3>Happiness</h3>
+            <p>
+                May you always have a reason
+                to smile.
+            </p>
+        </div>
+
+        <div class="wish">
+            <h3>Adventure</h3>
+            <p>
+                May this year bring you
+                exciting new experiences.
+            </p>
+        </div>
+
+        <div class="wish">
+            <h3>Success</h3>
+            <p>
+                May all the hard work you put in
+                lead you somewhere amazing.
+            </p>
+        </div>
+
+        <div class="wish">
+            <h3>
+                Love
+                <img src="heart.png" alt="heart">
+            </h3>
+
+            <p>
+                May you always be surrounded
+                by people who genuinely care about you.
+            </p>
+        </div>
+    </section>
+
+
+    <section class="birthday-cake">
+        <h2>
+            Make a wish 🕯️
+        </h2>
+
+        <p>
+            Close your eyes...
+        </p>
+
+        <p>
+            Think of something you've always wanted.
+        </p>
+
+        <p>
+            And make your wish. ✨
+        </p>
+    </section>
+
+
+    <section class="final">
+        <h1>
+            HAPPY BIRTHDAY
+            <img src="party-popper.png" alt="party">
+        </h1>
+
+        <h2>
+            To you
+            <img src="heart.png" alt="heart">
+        </h2>
+
+        <p>
+            Here's to another year of
+            happiness, laughter, adventures,
+            and unforgettable memories.
+        </p>
+
+        <p>
+            May this be your best chapter yet.
+        </p>
+
+        <p class="final-heart">
+            <img src="heart.png" alt="heart">
+        </p>
+    </section>
+
+
+    <script>
+        /* =====================================================
+           BIRTHDAY PAGE JAVASCRIPT
+        ===================================================== */
+
+        /* =====================================================
+           1. ADD REVEAL CLASS TO PAGE SECTIONS
+        ===================================================== */
+
+        const revealElements = document.querySelectorAll(
+            ".intro, .memories > h2, .memory, .wishes > h2, .wish, .birthday-cake, .final"
+        );
+
+        revealElements.forEach((element) => {
+            element.classList.add("reveal");
+        });
+
+
+        /* =====================================================
+           2. SCROLL REVEAL
+        ===================================================== */
+
+        const revealObserver = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                    }
+                });
+            },
+            {
+                threshold: 0.15
+            }
+        );
+
+        revealElements.forEach((element) => {
+            revealObserver.observe(element);
+        });
+
+
+        /* =====================================================
+           3. SEE MORE BUTTON
+        ===================================================== */
+
+        const scrollButton = document.querySelector(".scroll-down");
+
+        if (scrollButton) {
+            scrollButton.addEventListener("click", () => {
+
+                const introSection = document.querySelector(".intro");
+
+                if (introSection) {
+                    introSection.scrollIntoView({
+                        behavior: "smooth"
+                    });
+                }
+
+            });
+        }
+
+
+        /* =====================================================
+           4. CONFETTI
+        ===================================================== */
+
+        function createConfetti() {
+
+            for (let i = 0; i < 120; i++) {
+
+                const piece = document.createElement("div");
+
+                piece.classList.add("confetti");
+
+                piece.style.left =
+                    Math.random() * 100 + "vw";
+
+                piece.style.animationDuration =
+                    (2 + Math.random() * 4) + "s";
+
+                piece.style.animationDelay =
+                    Math.random() * 1.5 + "s";
+
+                piece.style.background =
+                    `hsl(${Math.random() * 360}, 80%, 70%)`;
+
+                piece.style.transform =
+                    `rotate(${Math.random() * 360}deg)`;
+
+                document.body.appendChild(piece);
+
+                setTimeout(() => {
+                    piece.remove();
+                }, 7000);
+            }
+        }
+
+
+        /* =====================================================
+           5. CONFETTI WHEN FINAL SECTION APPEARS
+        ===================================================== */
+
+        const finalSection = document.querySelector(".final");
+
+        if (finalSection) {
+
+            const finalObserver = new IntersectionObserver(
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            createConfetti();
+
+                            finalObserver.disconnect();
+                        }
+                    });
+
+                },
+                {
+                    threshold: 0.3
+                }
+            );
+
+            finalObserver.observe(finalSection);
+        }
+
+
+
+        /* =====================================================
+           5B. PARTY POPPER ANIMATION + BURST
+        ===================================================== */
+
+        const finalPartyPopper =
+            document.querySelector(".final h1 img");
+
+        function createPartyPopperBurst() {
+
+            if (!finalPartyPopper) return;
+
+            const rect =
+                finalPartyPopper.getBoundingClientRect();
+
+            const startX =
+                rect.left + rect.width / 2;
+
+            const startY =
+                rect.top + rect.height / 2;
+
+            for (let i = 0; i < 45; i++) {
+
+                const piece =
+                    document.createElement("span");
+
+                piece.classList.add("popper-confetti");
+
+                piece.style.left = startX + "px";
+                piece.style.top = startY + "px";
+
+                const angle =
+                    (-Math.PI * 0.85) +
+                    Math.random() * (Math.PI * 0.7);
+
+                const distance =
+                    100 + Math.random() * 220;
+
+                const x =
+                    Math.cos(angle) * distance;
+
+                const y =
+                    Math.sin(angle) * distance;
+
+                piece.style.setProperty(
+                    "--pop-x",
+                    `${x}px`
+                );
+
+                piece.style.setProperty(
+                    "--pop-y",
+                    `${y + 80}px`
+                );
+
+                piece.style.setProperty(
+                    "--pop-r",
+                    `${Math.random() * 720 - 360}deg`
+                );
+
+                piece.style.background =
+                    `hsl(${Math.random() * 360}, 85%, 65%)`;
+
+                piece.style.animationDelay =
+                    `${Math.random() * 0.15}s`;
+
+                document.body.appendChild(piece);
+
+                setTimeout(() => {
+                    piece.remove();
+                }, 1900);
+            }
+        }
+
+        if (finalSection && finalPartyPopper) {
+
+            const partyObserver =
+                new IntersectionObserver(
+                    (entries) => {
+
+                        entries.forEach((entry) => {
+
+                            if (entry.isIntersecting) {
+
+                                finalPartyPopper.classList.add(
+                                    "party-popper-active"
+                                );
+
+                                createPartyPopperBurst();
+
+                                setTimeout(() => {
+                                    finalPartyPopper.classList.remove(
+                                        "party-popper-active"
+                                    );
+                                }, 1000);
+
+                                partyObserver.disconnect();
+                            }
+                        });
+
+                    },
+                    {
+                        threshold: 0.5
+                    }
+                );
+
+            partyObserver.observe(finalSection);
+        }
+
+
+        /* =====================================================
+           6. BIRTHDAY WISH SECTION CLICK
+        ===================================================== */
+
+        const cakeSection =
+            document.querySelector(".birthday-cake");
+
+        if (cakeSection) {
+
+            cakeSection.addEventListener("click", () => {
+                createConfetti();
+            });
+        }
+
+
+        /* =====================================================
+           7. FINAL HEART
+        ===================================================== */
+
+        const finalHeart =
+            document.querySelector(".final-heart");
+
+        if (finalHeart) {
+
+            finalHeart.style.cursor = "pointer";
+
+            finalHeart.addEventListener("click", () => {
+
+                finalHeart.classList.add("heart-pop");
+
+                createHeartBurst(finalHeart);
+
+                setTimeout(() => {
+                    finalHeart.classList.remove("heart-pop");
+                }, 600);
+
+            });
+        }
+
+
+        /* =====================================================
+           8. HEART BURST
+        ===================================================== */
+
+        function createHeartBurst(element) {
+
+            const rect =
+                element.getBoundingClientRect();
+
+            for (let i = 0; i < 12; i++) {
+
+                const heart =
+                    document.createElement("span");
+
+                heart.innerHTML = "♥";
+
+                heart.classList.add("heart-burst");
+
+                heart.style.left =
+                    rect.left +
+                    rect.width / 2 +
+                    "px";
+
+                heart.style.top =
+                    rect.top +
+                    rect.height / 2 +
+                    "px";
+
+                heart.style.setProperty(
+                    "--x",
+                    `${(Math.random() - 0.5) * 180}px`
+                );
+
+                heart.style.setProperty(
+                    "--y",
+                    `${(Math.random() - 0.5) * 180}px`
+                );
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 1000);
+            }
+        }
+
+
+        /* =====================================================
+           9. PAGE LOADED
+        ===================================================== */
+
+        window.addEventListener("load", () => {
+
+            document.body.classList.add("loaded");
+
+            console.log(
+                "🎂 Birthday page JavaScript loaded!"
+            );
+
+        });
+        /* =====================================================
+   ENDING BALLOONS
+===================================================== */
+
+function createBalloons() {
+
+    const balloonColors = [
+        "#ff6b9d",
+        "#ffb86c",
+        "#7dd3fc",
+        "#a78bfa",
+        "#86efac",
+        "#f9a8d4"
+    ];
+
+    for (let i = 0; i < 18; i++) {
+
+        const balloon =
+            document.createElement("div");
+
+        balloon.classList.add("balloon");
+
+        balloon.style.left =
+            Math.random() * 100 + "vw";
+
+        balloon.style.background =
+            balloonColors[
+                Math.floor(
+                    Math.random() *
+                    balloonColors.length
+                )
+            ];
+
+        balloon.style.animationDuration =
+            (6 + Math.random() * 4) + "s";
+
+        balloon.style.animationDelay =
+            (Math.random() * 2) + "s";
+
+        balloon.style.transform =
+            `scale(${0.7 + Math.random() * 0.5})`;
+
+        document.body.appendChild(balloon);
+
+        setTimeout(() => {
+            balloon.remove();
+        }, 12000);
+    }
+}
+
+
+/* =====================================================
+   TRIGGER BALLOONS AT THE END
+===================================================== */
+
+let balloonsShown = false;
+
+window.addEventListener("scroll", () => {
+
+    const scrollPosition =
+        window.scrollY + window.innerHeight;
+
+    const pageHeight =
+        document.documentElement.scrollHeight;
+
+    if (
+        scrollPosition >= pageHeight - 100 &&
+        !balloonsShown
+    ) {
+
+        balloonsShown = true;
+
+        createBalloons();
+
+    }
+
+    });
+    </script>
+    <footer class="footer">
+        <p>Made with by <span>Shivam</span></p>
+    </footer>
+
+</body>
+</html>
